@@ -6,7 +6,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-83QQ0XC17J');</script>
 <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript";c.src="https://tracker.metricool.com/resources/be.js";c.onreadystatechange=a;c.onload=a;b.appendChild(c)}loadScript(function(){beTracker.t({hash:"13b1046d08aee740afda4e3efc2f23c0"})});</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:wght@600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 /* VOICE: tender, calm, trustworthy — like a gift handed by a neighbour
    IDEA: a prayer niche (mihrab arch) that opens onto the real work
@@ -130,7 +130,13 @@ footer .logo{display:block;margin:0 auto 8px}
 .fab{position:fixed;bottom:18px;inset-inline-start:18px;z-index:30;width:62px;height:62px;border-radius:50%;background:#1F8F55;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:pulse 2.4s infinite}
 .fab img{width:32px;height:32px;filter:brightness(10)}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,143,85,.5)}70%{box-shadow:0 0 0 18px rgba(31,143,85,0)}100%{box-shadow:0 0 0 0 rgba(31,143,85,0)}}
-@media(max-width:600px){#new .proof{grid-template-columns:minmax(0,1fr)!important}}@media(max-width:860px){.hero .wrap,.order,.del{grid-template-columns:minmax(0,1fr)}.proof,.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.offers{grid-template-columns:minmax(0,1fr)}.arch{width:min(300px,76vw)}}
+@media(max-width:600px){#new .proof{grid-template-columns:minmax(0,1fr)!important}}
+.lang{min-width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:800 15px Tajawal;cursor:pointer;padding:0 12px}
+.lang:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+:root[lang=en] h1,:root[lang=en] h2,:root[lang=en] h3,:root[lang=en] .bar b{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.2px}
+:root[lang=en] .hero h1 span{font-family:Tajawal}
+.bar b{white-space:nowrap}@media(max-width:420px){:root[lang=en] .bar b{font-size:20px}.bar{gap:8px}}
+@media(max-width:860px){.hero .wrap,.order,.del{grid-template-columns:minmax(0,1fr)}.proof,.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.offers{grid-template-columns:minmax(0,1fr)}.arch{width:min(300px,76vw)}}
 @media(max-width:600px){.bar .btn span{display:none}.hero p{font-size:17px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style></head><body>
@@ -147,6 +153,7 @@ footer .logo{display:block;margin:0 auto 8px}
 <path d="M-8 -2 C-8 -10 8 -10 8 -2 C8 6 -4 8 -4 0 C-4 -4 3 -4 3 0" fill="none" stroke="#4A2233" stroke-width="2.4" stroke-linecap="round"></path>
 </g>
 </svg><b>ورد المصلى</b><span class="sp"></span>
+<button class="lang" id="lang" aria-label="English / العربية">EN</button>
 <button class="snd" id="snd" aria-label="تشغيل الأصوات وإيقافها" title="النشيد والأصوات" aria-pressed="false">🔈</button>
 <a class="btn wa" id="topWa" href="https://wa.me/966562847528"><img src="whatsapp_ivory.png" alt=""><span>اطلبي الحين</span></a></header>
 
@@ -250,11 +257,14 @@ footer .logo{display:block;margin:0 auto 8px}
 
 <script>
 {
-const AR=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+let L='ar';try{L=localStorage.getItem('wm-lang')||((navigator.language||'ar').toLowerCase().startsWith('ar')?'ar':'en')}catch(e){}
+const AR=n=>L==='en'?String(n):String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+const DICT={"ورد المصلى": "Ward Almusalla", "اطلبي الحين": "Order now", "شراشف صلاة مشجّرة، مخيّطة بإتقان قطعة قطعة": "Floral prayer sheets, carefully sewn piece by piece", "قماش فسكوز ناعم وخفيف، وخياطة نظيفة بخط مستقيم وحواف مقفولة. شرشف يريحك في صلاتك، ويفرح فيه من تهدينه.": "Soft, light viscose fabric with clean straight stitching and fully finished edges. A prayer sheet that keeps you comfortable in prayer, and a gift that delights.", "اطلبي شرشفك": "Order yours", "شوفي النقشات": "See the patterns", "صور حقيقية من شغلنا": "Real photos of our work", "توصيل لكل المناطق": "Delivery across Saudi Arabia", "تواصل مباشر بالواتساب": "Direct WhatsApp contact", "نقشة الورد الجديدة": "The new rose pattern", "ورد عنّابي على أرضية كريمية ناعمة، يتفتّح في مصلّاك.": "Burgundy roses on a soft cream base, blooming on your prayer mat.", "ينسدل بخفّة": "Flows gently", "قماش فسكوز ناعم": "Soft viscose fabric", "ناعم وخفيف": "Soft and light", "مريح وقت الصلاة": "Comfortable in prayer", "ألوان ثابتة": "Lasting colours", "ثبات اللون ٤ من ٥": "Colour fastness 4 of 5", "اطلبي النقشة الجديدة": "Order the new pattern", "شوفي الخياطة بنفسك": "See the stitching for yourself", "ما نعرض صور من النت. هذي صور شغلنا الحقيقي.": "No internet photos. These are pictures of our real work.", "خط مستقيم": "Straight seams", "بلا تعرّج": "No wobbles", "حواف مقفولة": "Finished edges", "بلا زوائد": "No loose bits", "نظيف من الداخل": "Clean inside", "مثل الخارج": "As neat as outside", "كمّ بمطاط": "Elastic cuffs", "ثابت وقت الصلاة": "Stay put in prayer", "اختاري طلبك": "Choose your order", "اضغطي على العرض اللي يناسبك.": "Tap the offer that suits you.", "أكثر من ٤٠ نقشة": "Over 40 patterns", "كل نقشة لها رقم. اسحبي الصور واختاري الأرقام اللي عجبتك.": "Every pattern has a number. Swipe the photos and pick the numbers you like.", "تقدرين تختارين أكثر من نقشة.": "You can pick more than one pattern.", "جهّزي طلبك": "Prepare your order", "نجمع طلبك في رسالة واتساب جاهزة، وأنتِ بس ترسلينها.": "We put your order into a ready WhatsApp message. You just send it.", "العرض": "Offer", "العدد": "Quantity", "المدينة": "City", "الاسم (اختياري)": "Name (optional)", "ملخص طلبك": "Your order", "النقشات": "Patterns", "التوصيل": "Delivery", "المجموع": "Total", "أرسلي الطلب واتساب": "Send order on WhatsApp", "المجموع بدون رسوم التوصيل. نأكد لك كل التفاصيل وطريقة الدفع في الواتساب. الرقم:": "Total excludes delivery. We confirm all details and payment on WhatsApp. Number:", "وش نوع القماش؟": "What fabric is it?", "من ملصق المصنع على القماش نفسه.": "From the manufacturer's label on the fabric itself.", "فسكوز ١٠٠٪": "100% viscose", "ناعم وخفيف ويتنفس، مريح في الجو الحار": "Soft, light and breathable, comfortable in hot weather", "١٠٠ جرام": "100 g", "للمتر، خفيف ما يثقل وقت الصلاة": "per metre, light and never heavy in prayer", "٤ من ٥": "4 of 5", "ثبات اللون مع الغسيل": "colour fastness to washing", "ثبات اللون مع الكوي": "colour fastness to ironing", "اغسليه بماء أقل من ٤٠ درجة": "Wash below 40°C", "بدون كلور أو مبيّض": "No chlorine or bleach", "بدون نشافة، عشان ما يطلع وبر": "No tumble dryer, to avoid pilling", "نشّفيه في الظل": "Dry in the shade", "كوي على حرارة متوسطة": "Iron on medium heat", "صناعة صينية، والخياطة عندنا.": "Fabric made in China, sewn by us.", "نوصل لكل مناطق المملكة، من الشمال للجنوب ومن الشرق للغرب.": "We deliver to every region of the Kingdom, north to south and east to west.", "جدة": "Jeddah", "استلام مباشر، أو خزائن RedBox القريبة منك.": "Direct pickup, or a RedBox locker near you.", "باقي المناطق": "Other regions", "عن طريق خزائن RedBox المنتشرة في المدن، تستلمين طلبك من أقرب خزانة لك في الوقت اللي يناسبك.": "Through RedBox lockers across the cities. Collect your order from the nearest locker whenever it suits you.", "أسئلة تهمّك": "Questions you may have", "إذا عندك أي سؤال ثاني، كلمينا واتساب.": "Any other question? Message us on WhatsApp.", "هل الصور حقيقية؟": "Are the photos real?", "نعم، كل صور الخياطة والفيديو من شغلنا نفسه، ما فيها صور من النت.": "Yes. All sewing photos and the video are of our own work, nothing from the internet.", "هل اللون ينزل مع الغسيل؟": "Does the colour run in the wash?", "ثبات اللون درجة ٤ من ٥ حسب ملصق المصنع، يعني ثابت مع الغسيل العادي. اغسليه بماء فاتر وبدون مبيّض.": "Colour fastness is grade 4 of 5 per the manufacturer's label, so it holds in normal washing. Wash in lukewarm water without bleach.", "هل يطلع فيه وبر أو خيوط؟": "Does it pill or shed threads?", "الفسكوز قليل الوبر مع العناية الصحيحة، والمهم ما ينحط في النشافة. وحواف الخياطة مقفولة، فما تطلع خيوط.": "Viscose pills very little with proper care; just keep it out of the dryer. The seams are fully finished, so no threads come loose.", "كيف أطلب؟": "How do I order?", "اختاري النقشة والعرض من هالصفحة، واضغطي «أرسلي الطلب واتساب». توصلنا رسالتك جاهزة، ونرد عليك بالتفاصيل.": "Pick a pattern and an offer on this page, then tap “Send order on WhatsApp”. Your message reaches us ready, and we reply with the details.", "كيف الدفع والتوصيل؟": "How do payment and delivery work?", "نتفق معك على طريقة الدفع وموعد التجهيز في الواتساب. والتوصيل لكل المناطق عن طريق RedBox، وفي جدة فيه استلام مباشر بعد.": "We agree on payment and preparation time with you on WhatsApp. Delivery to all regions is by RedBox, and in Jeddah direct pickup is also available.", "شراشف صلاة": "Prayer sheets", "مثلاً: أم محمد": "e.g. Umm Mohammed", "تشغيل الأصوات وإيقافها": "Turn sound on or off", "صفحات النقشات": "Pattern pages", "أرقام النقشات": "Pattern numbers", "السابق": "Previous", "التالي": "Next", "أقل": "Less", "أكثر": "More", "قماش الورد الجديد منسدل": "New rose fabric draped", "طيّات قماش الورد": "Folds of the rose fabric", "تفاصيل ورد النقشة": "Rose pattern detail", "خط خياطة مستقيم تحت المكينة": "Straight seam under the machine", "حافة مخيطة ومقفولة": "Finished sewn edge", "تشطيب الخياطة من الداخل": "Inside seam finish", "كم بمطاط": "Elastic cuff"};
 const $=id=>document.getElementById(id);
-const OFFERS=[{id:'one',t:'شرشف واحد',p:50,per:1,d:'لك أو لأحد تحبينه'},{id:'gift',t:'علبة هدية',p:80,per:1,d:'شرشف في علبة هدية أنيقة',tag:'للهدايا'},{id:'fam',t:'عرض العائلة',p:135,per:3,d:'٣ شراشف، وفّري ١٥ ريال',tag:'الأوفر'}];
-const CITIES=['جدة','مكة المكرمة','المدينة المنورة','الرياض','الدمام','الخبر','الأحساء','القصيم','حائل','تبوك','الجوف','عرعر','أبها','خميس مشيط','جازان','نجران','الباحة','الطائف','ينبع','مدينة أخرى'];
-let st={offer:'one',qty:1,pats:new Set(),city:'جدة'};
+const OFFERS=[{id:'one',t:'شرشف واحد',te:'One sheet',p:50,per:1,d:'لك أو لأحد تحبينه',de:'For you or someone you love'},{id:'gift',t:'علبة هدية',te:'Gift box',p:80,per:1,d:'شرشف في علبة هدية أنيقة',de:'A sheet in an elegant gift box',tag:'للهدايا',tage:'For gifts'},{id:'fam',t:'عرض العائلة',te:'Family offer',p:135,per:3,d:'٣ شراشف، وفّري ١٥ ريال',de:'3 sheets, save 15 SAR',tag:'الأوفر',tage:'Best value'}];
+const T=(o,k)=>L==='en'?(o[k+'e']||o[k]):o[k];const CUR=()=>L==='en'?'SAR':'ريال';
+const CITIES=[['جدة','Jeddah'],['مكة المكرمة','Makkah'],['المدينة المنورة','Madinah'],['الرياض','Riyadh'],['الدمام','Dammam'],['الخبر','Khobar'],['الأحساء','Al-Ahsa'],['القصيم','Qassim'],['حائل','Hail'],['تبوك','Tabuk'],['الجوف','Al-Jouf'],['عرعر','Arar'],['أبها','Abha'],['خميس مشيط','Khamis Mushait'],['جازان','Jazan'],['نجران','Najran'],['الباحة','Al-Baha'],['الطائف','Taif'],['ينبع','Yanbu'],['مدينة أخرى','Other city']];
+let st={offer:'one',qty:1,pats:new Set(),city:0};
 const track=(n,p)=>{try{window.gtag&&gtag('event',n,p||{})}catch(e){}};
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href*="wa.me"]');if(a)track(a.id==='send'?'order_whatsapp':'whatsapp_click',{link_id:a.id||a.className||'link',offer:st.offer,qty:st.qty,city:st.city,patterns:[...st.pats].join('-')})},{capture:true});
 
@@ -276,20 +286,24 @@ if(!muted){try{if(canVol)bg.volume=.4;const p=bg.play();if(p&&p.then)p.then(()=>
 $('snd').onclick=()=>{started=true;if(snd){soundOff();muted=true}else{soundOn();muted=false;chime()}try{localStorage.setItem('wm-mute',muted?'1':'')}catch(e){}};
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&snd)bg.pause();else if(!document.hidden&&snd){try{bg.play().catch(()=>{})}catch(e){}}});
 /* offers */
-$('offersBox').innerHTML=OFFERS.map(o=>`<button type="button" class="off rv" data-id="${o.id}">${o.tag?`<span class="tag">${o.tag}</span>`:''}<span class="ck">✓</span><h3>${o.t}</h3><div class="pr">${AR(o.p)} <small>ريال</small></div><div>${o.d}</div></button>`).join('');
-$('fOffer').innerHTML=OFFERS.map(o=>`<option value="${o.id}">${o.t} — ${AR(o.p)} ريال</option>`).join('');
-$('fCity').innerHTML=CITIES.map(c=>`<option>${c}</option>`).join('');
-document.querySelectorAll('.off').forEach(b=>b.onclick=()=>{st.offer=b.dataset.id;track('offer_select',{offer:st.offer});sel();render();$('order').scrollIntoView({behavior:'smooth'})});
+function buildOffers(){
+$('offersBox').innerHTML=OFFERS.map(o=>`<button type="button" class="off rv on" data-id="${o.id}">${o.tag?`<span class="tag">${T(o,'tag')}</span>`:''}<span class="ck">✓</span><h3>${T(o,'t')}</h3><div class="pr">${AR(o.p)} <small>${CUR()}</small></div><div>${T(o,'d')}</div></button>`).join('');
+$('fOffer').innerHTML=OFFERS.map(o=>`<option value="${o.id}">${T(o,'t')} — ${AR(o.p)} ${CUR()}</option>`).join('');
+$('fCity').innerHTML=CITIES.map((c,i)=>`<option value="${i}">${L==='en'?c[1]:c[0]}</option>`).join('');$('fCity').value=st.city;
+document.querySelectorAll('.off').forEach(b=>b.onclick=()=>{st.offer=b.dataset.id;track('offer_select',{offer:st.offer});sel();render();$('order').scrollIntoView({behavior:'smooth'})});}
+buildOffers();
 $('fOffer').onchange=e=>{st.offer=e.target.value;tap();render()};
-$('fCity').onchange=e=>{st.city=e.target.value;tap();render()};
+$('fCity').onchange=e=>{st.city=+e.target.value;tap();render()};
 $('fName').oninput=render;
 $('plus').onclick=()=>{st.qty=Math.min(30,st.qty+1);tap();render()};
 $('minus').onclick=()=>{st.qty=Math.max(1,st.qty-1);tap();render()};
 /* catalog */
 const car=$('car');
 car.innerHTML=[...Array(9)].map((_,i)=>`<figure id="pg${i+1}"><img src="cat${i+1}.jpg" alt="النقشات من ${AR(i*5+1)} إلى ${AR(i*5+5)}" loading="lazy"></figure>`).join('');
-$('pages').innerHTML=[...Array(9)].map((_,i)=>`<button class="pg" data-p="${i+1}">${AR(i*5+1)}–${AR(i*5+5)}</button>`).join('');
-$('chips').innerHTML=[...Array(45)].map((_,i)=>`<button type="button" class="chip" data-n="${i+1}" aria-pressed="false">${AR(i+1)}</button>`).join('');
+$('pages').innerHTML=[...Array(9)].map((_,i)=>`<button class="pg" data-p="${i+1}"></button>`).join('');
+$('chips').innerHTML=[...Array(45)].map((_,i)=>`<button type="button" class="chip" data-n="${i+1}" aria-pressed="false"></button>`).join('');
+function numLabels(){document.querySelectorAll('#pages .pg').forEach((b,i)=>b.textContent=AR(i*5+1)+'–'+AR(i*5+5));document.querySelectorAll('.chip').forEach(c=>c.textContent=AR(c.dataset.n))}
+numLabels();
 let cur=1;
 function goPage(p){cur=Math.max(1,Math.min(9,p));$('pg'+cur).scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});markPage()}
 function markPage(){document.querySelectorAll('#pages .pg').forEach(b=>b.classList.toggle('on',+b.dataset.p===cur))}
@@ -305,16 +319,28 @@ function render(){
  document.querySelectorAll('.off').forEach(b=>b.classList.toggle('sel',b.dataset.id===st.offer));
  $('fOffer').value=st.offer;
  const pats=[...st.pats].sort((a,b)=>a-b);
- $('tOffer').textContent=o.t;$('tPat').textContent=pats.length?pats.map(AR).join('، '):'لم تختاري بعد';
- $('q').textContent=AR(st.qty);$('tQty').textContent=AR(st.qty)+(o.per>1?` (${AR(st.qty*o.per)} شراشف)`:'');
- $('tDel').textContent=st.city==='جدة'?'جدة: استلام أو RedBox':st.city+': RedBox';
- const tot=o.p*st.qty;$('tTot').textContent=AR(tot)+' ريال';$('tTot').classList.remove('pop');void $('tTot').offsetWidth;$('tTot').classList.add('pop');
+ const en=L==='en',cty=CITIES[st.city];
+ $('tOffer').textContent=T(o,'t');$('tPat').textContent=pats.length?pats.map(AR).join(en?', ':'، '):(en?'None picked yet':'لم تختاري بعد');
+ $('q').textContent=AR(st.qty);$('tQty').textContent=AR(st.qty)+(o.per>1?(en?` (${st.qty*o.per} sheets)`:` (${AR(st.qty*o.per)} شراشف)`):'');
+ $('tDel').textContent=st.city===0?(en?'Jeddah: pickup or RedBox':'جدة: استلام أو RedBox'):(en?cty[1]:cty[0])+': RedBox';
+ const tot=o.p*st.qty;$('tTot').textContent=AR(tot)+' '+CUR();$('tTot').classList.remove('pop');void $('tTot').offsetWidth;$('tTot').classList.add('pop');
  const name=$('fName').value.trim();
- const msg=`السلام عليكم 🌸 أبغى أطلب من ورد المصلى:\n• العرض: ${o.t}\n• النقشات: ${pats.length?pats.join('، '):'أبغى تساعدوني أختار'}\n• العدد: ${st.qty}\n• المدينة: ${st.city}${name?`\n• الاسم: ${name}`:''}\n• المجموع: ${tot} ريال`;
+ const msg=en?`Hello 🌸 I'd like to order from Ward Almusalla:\n• Offer: ${o.te} (${o.t})\n• Patterns: ${pats.length?pats.join(', '):'Please help me choose'}\n• Quantity: ${st.qty}\n• City: ${cty[1]} (${cty[0]})${name?`\n• Name: ${name}`:''}\n• Total: ${tot} SAR`
+ :`السلام عليكم 🌸 أبغى أطلب من ورد المصلى:\n• العرض: ${o.t}\n• النقشات: ${pats.length?pats.join('، '):'أبغى تساعدوني أختار'}\n• العدد: ${st.qty}\n• المدينة: ${cty[0]}${name?`\n• الاسم: ${name}`:''}\n• المجموع: ${tot} ريال`;
  $('send').href='https://wa.me/966562847528?text='+encodeURIComponent(msg);
 }
 $('send').addEventListener('click',()=>chime());
-render();markPage();
+/* language switch */
+const tn=[];{const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentNode.closest('script,#offersBox,#tOffer,#tPat,#tQty,#tDel,#tTot,#q,#pages,#chips,#fOffer,#fCity,#snd,#lang')?NodeFilter.FILTER_REJECT:(DICT[n.nodeValue.trim()]?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT)});let n;while(n=w.nextNode())tn.push([n,n.nodeValue])}
+const at=[...document.querySelectorAll('[placeholder],[aria-label],[alt]')].flatMap(el=>['placeholder','aria-label','alt'].filter(a=>el.hasAttribute(a)&&DICT[el.getAttribute(a)]).map(a=>[el,a,el.getAttribute(a)]));
+const titleAr=document.title;
+function applyLang(){const en=L==='en';document.documentElement.lang=en?'en':'ar';document.documentElement.dir=en?'ltr':'rtl';
+ tn.forEach(([n,ar])=>{n.nodeValue=en?ar.replace(ar.trim(),DICT[ar.trim()]):ar});at.forEach(([el,a,ar])=>el.setAttribute(a,en?DICT[ar]:ar));
+ document.title=en?'Ward Almusalla | Prayer sheets':titleAr;$('lang').textContent=en?'ع':'EN';$('lang').setAttribute('aria-label',en?'التبديل إلى العربية':'Switch to English');
+ const pr=$('prevP'),nx=$('nextP');pr.textContent=en?'‹':'›';nx.textContent=en?'›':'‹';
+ buildOffers();numLabels();render();}
+$('lang').onclick=()=>{L=L==='en'?'ar':'en';try{localStorage.setItem('wm-lang',L)}catch(e){}tap();applyLang();track('language',{lang:L})};
+applyLang();markPage();
 try{if(localStorage.getItem('wm-snd')){/* stays off until a tap; browsers need a click to play sound */}}catch(e){}
 /* reveal on scroll */
 const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');rio.unobserve(e.target)}}),{threshold:.15});
