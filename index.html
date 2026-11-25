@@ -144,7 +144,7 @@ footer .logo{display:block;margin:0 auto 8px}
 <path d="M-8 -2 C-8 -10 8 -10 8 -2 C8 6 -4 8 -4 0 C-4 -4 3 -4 3 0" fill="none" stroke="#4A2233" stroke-width="2.4" stroke-linecap="round"></path>
 </g>
 </svg><b>ورد المصلى</b><span class="sp"></span>
-<button class="snd" id="snd" aria-label="تشغيل الأصوات وإيقافها" title="الأصوات">🔈</button>
+<button class="snd" id="snd" aria-label="تشغيل الأصوات وإيقافها" title="النشيد والأصوات" aria-pressed="false">🔈</button>
 <a class="btn wa" id="topWa" href="https://wa.me/966562847528"><img src="whatsapp_ivory.png" alt=""><span>اطلبي الحين</span></a></header>
 
 <section class="hero band"><canvas id="petals"></canvas><div class="wrap">
@@ -256,7 +256,15 @@ let st={offer:'one',qty:1,pats:new Set(),city:'جدة'};
 let snd=false,ac=null;
 function tone(f,d=.25,v=.08,type='sine'){if(!snd)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type=type;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d+.05)}catch(e){}}
 const tap=()=>tone(660,.18,.06),sel=()=>{tone(784,.3,.06);setTimeout(()=>tone(1046,.4,.05),70)},chime=()=>{[523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,.6,.05),i*90))};
-$('snd').onclick=()=>{snd=!snd;$('snd').textContent=snd?'🔊':'🔈';try{localStorage.setItem('wm-snd',snd?'1':'')}catch(e){}if(snd)chime()};
+/* background nasheed: starts softly on the visitor's first tap anywhere (browsers block autoplay with sound) */
+const bg=new Audio('nasheed.mp3');bg.loop=true;bg.volume=0;bg.preload='auto';let started=false,fadeT=null;
+function fadeTo(v){clearInterval(fadeT);fadeT=setInterval(()=>{const d=v-bg.volume;if(Math.abs(d)<.02){bg.volume=v;clearInterval(fadeT);if(v===0)bg.pause();return}bg.volume=Math.max(0,Math.min(1,bg.volume+Math.sign(d)*.02))},80)}
+function soundOn(){snd=true;$('snd').textContent='🔊';$('snd').setAttribute('aria-pressed','true');try{const p=bg.play();if(p&&p.catch)p.catch(()=>{})}catch(e){}fadeTo(.35)}
+function soundOff(){snd=false;$('snd').textContent='🔇';$('snd').setAttribute('aria-pressed','false');fadeTo(0)}
+let muted=false;try{muted=localStorage.getItem('wm-mute')==='1'}catch(e){}
+document.addEventListener('pointerdown',e=>{if(started||muted||e.target.closest('#snd'))return;started=true;soundOn()},{capture:true});
+$('snd').onclick=()=>{started=true;if(snd){soundOff();muted=true}else{soundOn();muted=false;chime()}try{localStorage.setItem('wm-mute',muted?'1':'')}catch(e){}};
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&snd)bg.pause();else if(!document.hidden&&snd){try{bg.play().catch(()=>{})}catch(e){}}});
 /* offers */
 $('offersBox').innerHTML=OFFERS.map(o=>`<button type="button" class="off rv" data-id="${o.id}">${o.tag?`<span class="tag">${o.tag}</span>`:''}<span class="ck">✓</span><h3>${o.t}</h3><div class="pr">${AR(o.p)} <small>ريال</small></div><div>${o.d}</div></button>`).join('');
 $('fOffer').innerHTML=OFFERS.map(o=>`<option value="${o.id}">${o.t} — ${AR(o.p)} ريال</option>`).join('');
