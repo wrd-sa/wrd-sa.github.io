@@ -2,6 +2,8 @@
 <html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ورد المصلى | شراشف صلاة</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-83QQ0XC17J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-83QQ0XC17J');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
@@ -252,6 +254,9 @@ const $=id=>document.getElementById(id);
 const OFFERS=[{id:'one',t:'شرشف واحد',p:50,per:1,d:'لك أو لأحد تحبينه'},{id:'gift',t:'علبة هدية',p:80,per:1,d:'شرشف في علبة هدية أنيقة',tag:'للهدايا'},{id:'fam',t:'عرض العائلة',p:135,per:3,d:'٣ شراشف، وفّري ١٥ ريال',tag:'الأوفر'}];
 const CITIES=['جدة','مكة المكرمة','المدينة المنورة','الرياض','الدمام','الخبر','الأحساء','القصيم','حائل','تبوك','الجوف','عرعر','أبها','خميس مشيط','جازان','نجران','الباحة','الطائف','ينبع','مدينة أخرى'];
 let st={offer:'one',qty:1,pats:new Set(),city:'جدة'};
+const track=(n,p)=>{try{window.gtag&&gtag('event',n,p||{})}catch(e){}};
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[href*="wa.me"]');if(a)track(a.id==='send'?'order_whatsapp':'whatsapp_click',{link_id:a.id||a.className||'link',offer:st.offer,qty:st.qty,city:st.city,patterns:[...st.pats].join('-')})},{capture:true});
+
 /* sound: soft synthesized chimes, off until the visitor turns it on */
 let snd=false,ac=null;
 function tone(f,d=.25,v=.08,type='sine'){if(!snd)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type=type;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d+.05)}catch(e){}}
@@ -271,7 +276,7 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&snd)bg.pau
 $('offersBox').innerHTML=OFFERS.map(o=>`<button type="button" class="off rv" data-id="${o.id}">${o.tag?`<span class="tag">${o.tag}</span>`:''}<span class="ck">✓</span><h3>${o.t}</h3><div class="pr">${AR(o.p)} <small>ريال</small></div><div>${o.d}</div></button>`).join('');
 $('fOffer').innerHTML=OFFERS.map(o=>`<option value="${o.id}">${o.t} — ${AR(o.p)} ريال</option>`).join('');
 $('fCity').innerHTML=CITIES.map(c=>`<option>${c}</option>`).join('');
-document.querySelectorAll('.off').forEach(b=>b.onclick=()=>{st.offer=b.dataset.id;sel();render();$('order').scrollIntoView({behavior:'smooth'})});
+document.querySelectorAll('.off').forEach(b=>b.onclick=()=>{st.offer=b.dataset.id;track('offer_select',{offer:st.offer});sel();render();$('order').scrollIntoView({behavior:'smooth'})});
 $('fOffer').onchange=e=>{st.offer=e.target.value;tap();render()};
 $('fCity').onchange=e=>{st.city=e.target.value;tap();render()};
 $('fName').oninput=render;
@@ -290,7 +295,7 @@ $('prevP').onclick=()=>{tap();goPage(cur-1)};$('nextP').onclick=()=>{tap();goPag
 car.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){goPage(cur+1)}if(e.key==='ArrowRight'){goPage(cur-1)}});
 const pio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.6){cur=+e.target.id.slice(2);markPage()}})},{root:car,threshold:[.6]});
 car.querySelectorAll('figure').forEach(f=>pio.observe(f));
-document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const n=+c.dataset.n;if(st.pats.has(n)){st.pats.delete(n);tap()}else{st.pats.add(n);sel();goPage(Math.ceil(n/5))}c.classList.toggle('on',st.pats.has(n));c.setAttribute('aria-pressed',st.pats.has(n));render()});
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const n=+c.dataset.n;if(st.pats.has(n)){st.pats.delete(n);tap()}else{st.pats.add(n);sel();goPage(Math.ceil(n/5));track('pattern_select',{pattern:n})}c.classList.toggle('on',st.pats.has(n));c.setAttribute('aria-pressed',st.pats.has(n));render()});
 /* order summary */
 function render(){
  const o=OFFERS.find(x=>x.id===st.offer);
