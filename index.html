@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ورد المصلى | شراشف صلاة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE: tender, calm, trustworthy — like a gift handed by a neighbour
+   IDEA: a prayer niche (mihrab arch) that opens onto the real work
+   PICTURE: arched window playing the real sewing film, petals drifting
+   COLOUR and TYPE: plum ground, ivory fields, rose + gold accents; Aref Ruqaa titles, Tajawal body
+   LAYOUT: hero arch, proof photos, offers, pattern picker, order builder, fabric facts, FAQ, footer */
+:root{color-scheme:light dark;--bg:light-dark(#F7F1E8,#1E0E16);--ink:light-dark(#2E1520,#F7F1E8);--soft:light-dark(#6B4A57,#D9C3B8);
+--plum:#4A2233;--rose:#B5576F;--gold:#B8955A;--sage:#7A8B6F;--card:light-dark(#FFFDF9,#2B1520);--line:light-dark(#E6D8C6,#4A2A38)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 Tajawal,"Segoe UI",Tahoma,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Aref Ruqaa",serif;line-height:1.15;margin:0;text-wrap:balance;font-weight:700}
+h2{font-size:clamp(32px,5vw,46px);color:light-dark(var(--plum),#F3DDE3)}
+.band{padding:clamp(40px,6vw,80px) max(5vw,18px)}
+.wrap{max-width:1160px;margin:0 auto}
+.sub{color:var(--soft);margin:10px 0 28px;font-size:18px}
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px max(5vw,16px);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar b{font-family:"Aref Ruqaa";font-size:24px;color:light-dark(var(--plum),#F3DDE3)}
+.bar .sp{flex:1}
+.snd{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:18px;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:40px;border:0;font:700 18px Tajawal;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:focus-visible,.snd:focus-visible,.chip:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn.wa{background:#1F8F55;color:#fff;box-shadow:0 10px 30px rgba(31,143,85,.35)}
+.btn.wa img{width:26px;height:26px;filter:brightness(10)}
+.btn.ghost{background:transparent;color:inherit;border:2px solid currentColor}
+.btn:hover{transform:translateY(-2px)}
+.bar .btn{min-height:44px;padding:0 18px;font-size:16px}
+/* hero */
+.hero{position:relative;background:var(--plum);color:#F7F1E8;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center}
+.hero h1{font-size:clamp(46px,7.5vw,84px);color:#F7F1E8}
+.hero h1 span{display:block;font-family:Tajawal;font-weight:500;font-size:.32em;color:#E7C9A0;letter-spacing:0;margin-top:14px}
+.hero p{font-size:19px;color:#EADBD2;max-width:30em;margin:22px 0 30px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:14px}
+.arch{position:relative;justify-self:center;width:min(380px,82vw);aspect-ratio:9/15;border-radius:50% 50% 18px 18px / 30% 30% 18px 18px;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 0 10px rgba(184,149,90,.18),0 40px 90px rgba(0,0,0,.5);animation:rise 1.2s cubic-bezier(.2,.8,.2,1) both}
+.arch video{width:100%;height:100%;object-fit:cover;display:block}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:15px;color:#E7C9A0}
+.trust i{font-style:normal;color:#F7F1E8}
+#petals{position:absolute;inset:0;pointer-events:none}
+@keyframes rise{from{opacity:0;transform:translateY(60px) scale(.94)}to{opacity:1;transform:none}}
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.ph{margin:0;position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4;background:#ccc}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s}
+.ph:hover img{transform:scale(1.08)}
+.ph figcaption{position:absolute;inset:auto 0 0 0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(40,14,26,.9));color:#F7F1E8;font-weight:700;font-size:17px}
+.ph small{display:block;font-weight:400;color:#E7C9A0;font-size:14px}
+.note{font-size:14px;color:var(--soft);margin-top:14px}
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.off{position:relative;text-align:start;background:var(--card);border:2px solid var(--line);border-radius:24px;padding:26px 24px;cursor:pointer;color:inherit;font:inherit;transition:transform .25s,border-color .25s,box-shadow .25s}
+.off:hover{transform:translateY(-4px)}
+.off.sel{border-color:var(--rose);box-shadow:0 18px 40px rgba(181,87,111,.22)}
+.off h3{font-size:30px;color:light-dark(var(--plum),#F3DDE3)}
+.off .pr{font:800 44px Tajawal;color:var(--rose);margin:10px 0 4px;white-space:nowrap}
+.off .pr small{font-size:18px;font-weight:500;color:var(--soft)}
+.off .tag{position:absolute;top:-14px;inset-inline-start:20px;background:var(--sage);color:#fff;border-radius:30px;padding:2px 14px;font-size:14px;font-weight:700}
+.off .ck{position:absolute;top:18px;inset-inline-end:18px;width:30px;height:30px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;color:#fff;font-size:16px}
+.off.sel .ck{background:var(--rose);border-color:var(--rose)}
+/* catalog */
+.cat-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px}
+.pages{display:flex;gap:8px;flex-wrap:wrap}
+.pg{min-width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:inherit;font:700 15px Tajawal;cursor:pointer;padding:0 12px}
+.pg.on{background:var(--plum);color:#F7F1E8;border-color:var(--plum)}
+.car{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:20px 2px 10px;scrollbar-width:thin}
+.car figure{flex:0 0 min(360px,80vw);margin:0;scroll-snap-align:center;border-radius:20px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.15)}
+.car img{width:100%;display:block}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:8px;margin-top:22px}
+.chip{height:50px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:inherit;font:700 17px Tajawal;cursor:pointer;transition:transform .15s,background .2s}
+.chip.on{background:var(--rose);border-color:var(--rose);color:#fff;transform:scale(1.06)}
+.navs{display:flex;gap:10px;margin-top:10px}
+/* order */
+.order{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.form{display:grid;gap:18px}
+label{display:grid;gap:6px;font-weight:700;font-size:16px}
+select,input{height:52px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:500 16px Tajawal;padding:0 14px}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:52px;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:inherit;font-size:24px;cursor:pointer}
+.qty output{min-width:50px;text-align:center;font:800 24px Tajawal}
+.ticket{position:relative;background:var(--plum);color:#F7F1E8;border-radius:28px;padding:30px 28px;overflow:hidden}
+.ticket h3{font-size:32px}
+.ticket dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px;margin:20px 0}
+.ticket dt{color:#E7C9A0}.ticket dd{margin:0;font-weight:700}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed rgba(231,201,160,.5);padding-top:16px;margin-bottom:22px}
+.total b{font:800 40px Tajawal;white-space:nowrap}
+.ticket .btn{width:100%}
+.ticket .hint{font-size:14px;color:#D9C3B8;margin-top:12px}
+.pop{animation:pop .35s}
+@keyframes pop{50%{transform:scale(1.08)}}
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}
+.fact b{display:block;font:800 30px Tajawal;color:var(--rose)}
+.meter{height:10px;border-radius:6px;background:var(--line);margin-top:10px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--rose));border-radius:6px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.on .meter i{width:var(--w)}
+.care{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.care span{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:8px 16px;font-size:15px}
+/* delivery */
+.del{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.dbox{border-radius:24px;padding:26px;background:var(--card);border:1px solid var(--line)}
+.dbox h3{font-size:28px;color:light-dark(var(--plum),#F3DDE3)}
+/* faq */
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:4px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--rose);font-size:24px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 16px;color:var(--soft)}
+/* footer */
+footer{background:var(--plum);color:#F7F1E8;text-align:center}
+footer .logo{display:block;margin:0 auto 8px}
+.soc{display:flex;justify-content:center;gap:16px;margin:22px 0}
+.soc a{width:56px;height:56px;border-radius:50%;background:rgba(247,241,232,.1);display:grid;place-items:center;transition:transform .2s,background .2s}
+.soc a:hover{transform:translateY(-4px);background:rgba(247,241,232,.2)}
+.soc img{width:30px;height:30px}
+.fab{position:fixed;bottom:18px;inset-inline-start:18px;z-index:30;width:62px;height:62px;border-radius:50%;background:#1F8F55;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:pulse 2.4s infinite}
+.fab img{width:32px;height:32px;filter:brightness(10)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,143,85,.5)}70%{box-shadow:0 0 0 18px rgba(31,143,85,0)}100%{box-shadow:0 0 0 0 rgba(31,143,85,0)}}
+@media(max-width:860px){.hero .wrap,.order,.del{grid-template-columns:minmax(0,1fr)}.proof,.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.offers{grid-template-columns:minmax(0,1fr)}.arch{width:min(300px,76vw)}}
+@media(max-width:600px){.bar .btn span{display:none}.hero p{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style></head><body>
+<header class="bar"><svg width="30" height="39" viewBox="0 0 200 260" aria-hidden="true">
+<path d="M18 252 V112 C18 62 66 30 100 6 C134 30 182 62 182 112 V252 Z" fill="none" stroke="#B8955A" stroke-width="3"></path>
+<path d="M30 252 V116 C30 72 72 44 100 22 C128 44 170 72 170 116 V252" fill="none" stroke="#B8955A" stroke-width="1.2"></path>
+<path d="M100 236 C100 210 98 190 100 168" stroke="#7A8B6F" stroke-width="3" fill="none" stroke-linecap="round"></path>
+<path d="M100 212 C80 206 70 192 72 182 C88 184 98 196 100 212 Z" fill="#7A8B6F"></path>
+<path d="M100 200 C120 194 130 180 128 170 C112 172 102 184 100 200 Z" fill="#7A8B6F"></path>
+<g transform="translate(100 128)">
+<path d="M-34 6 C-40 -20 -20 -40 0 -38 C20 -40 40 -20 34 6 C30 30 -30 30 -34 6 Z" fill="#E7B9C4"></path>
+<path d="M-26 4 C-30 -16 -14 -30 0 -28 C14 -30 30 -16 26 4 C22 22 -22 22 -26 4 Z" fill="#C97A8D"></path>
+<path d="M-17 2 C-19 -12 -8 -20 0 -19 C8 -20 19 -12 17 2 C14 14 -14 14 -17 2 Z" fill="#B5576F"></path>
+<path d="M-8 -2 C-8 -10 8 -10 8 -2 C8 6 -4 8 -4 0 C-4 -4 3 -4 3 0" fill="none" stroke="#4A2233" stroke-width="2.4" stroke-linecap="round"></path>
+</g>
+</svg><b>ورد المصلى</b><span class="sp"></span>
+<button class="snd" id="snd" aria-label="تشغيل الأصوات وإيقافها" title="الأصوات">🔈</button>
+<a class="btn wa" id="topWa" href="https://wa.me/966562847528"><img src="whatsapp_ivory.png" alt=""><span>اطلبي الحين</span></a></header>
+
+<section class="hero band"><canvas id="petals"></canvas><div class="wrap">
+<div><h1>ورد المصلى<span>شراشف صلاة مشجّرة، مخيّطة بإتقان قطعة قطعة</span></h1>
+<p>قماش فسكوز ناعم وخفيف، وخياطة نظيفة بخط مستقيم وحواف مقفولة. شرشف يريحك في صلاتك، ويفرح فيه من تهدينه.</p>
+<div class="ctas"><a class="btn wa" href="#order"><img src="whatsapp_ivory.png" alt="">اطلبي شرشفك</a><a class="btn ghost" href="#patterns">شوفي النقشات</a></div>
+<div class="trust"><i>✓</i> صور حقيقية من شغلنا <i>✓</i> توصيل لكل المناطق <i>✓</i> تواصل مباشر بالواتساب</div></div>
+<div class="arch"><video src="khiyata.mp4" poster="poster.jpg" autoplay muted loop playsinline></video></div>
+</div></section>
+
+<section class="band" id="work"><div class="wrap">
+<h2 class="rv">شوفي الخياطة بنفسك</h2><p class="sub rv">ما نعرض صور من النت. هذي صور شغلنا الحقيقي.</p>
+<div class="proof">
+<figure class="ph rv"><img src="p4.jpg" alt="خط خياطة مستقيم تحت المكينة" loading="lazy"><figcaption>خط مستقيم<small>بلا تعرّج</small></figcaption></figure>
+<figure class="ph rv"><img src="p3.jpg" alt="حافة مخيطة ومقفولة" loading="lazy"><figcaption>حواف مقفولة<small>بلا زوائد</small></figcaption></figure>
+<figure class="ph rv"><img src="p2.jpg" alt="تشطيب الخياطة من الداخل" loading="lazy"><figcaption>نظيف من الداخل<small>مثل الخارج</small></figcaption></figure>
+<figure class="ph rv"><img src="p5.jpg" alt="كم بمطاط" loading="lazy"><figcaption>كمّ بمطاط<small>ثابت وقت الصلاة</small></figcaption></figure>
+</div></div></section>
+
+<section class="band" id="offers" style="background:light-dark(#F1E6D8,#26121C)"><div class="wrap">
+<h2 class="rv">اختاري طلبك</h2><p class="sub rv">اضغطي على العرض اللي يناسبك.</p>
+<div class="offers" id="offersBox"></div></div></section>
+
+<section class="band" id="patterns"><div class="wrap">
+<div class="cat-head"><div><h2 class="rv">أكثر من ٤٠ نقشة</h2><p class="sub rv" style="margin-bottom:0">كل نقشة لها رقم. اسحبي الصور واختاري الأرقام اللي عجبتك.</p></div>
+<div class="pages" id="pages"></div></div>
+<div class="car" id="car" tabindex="0" aria-label="صفحات النقشات"></div>
+<div class="navs"><button class="pg" id="prevP" aria-label="السابق">›</button><button class="pg" id="nextP" aria-label="التالي">‹</button></div>
+<div class="chips" id="chips" aria-label="أرقام النقشات"></div>
+<p class="note">تقدرين تختارين أكثر من نقشة.</p></div></section>
+
+<section class="band" id="order" style="background:light-dark(#F1E6D8,#26121C)"><div class="wrap">
+<h2 class="rv">جهّزي طلبك</h2><p class="sub rv">نجمع طلبك في رسالة واتساب جاهزة، وأنتِ بس ترسلينها.</p>
+<div class="order"><div class="form">
+<label>العرض<select id="fOffer"></select></label>
+<label>العدد<div class="qty"><button type="button" id="minus" aria-label="أقل">−</button><output id="q">١</output><button type="button" id="plus" aria-label="أكثر">+</button></div></label>
+<label>المدينة<select id="fCity"></select></label>
+<label>الاسم (اختياري)<input id="fName" autocomplete="name" placeholder="مثلاً: أم محمد"></label>
+</div>
+<div class="ticket" id="ticket"><h3>ملخص طلبك</h3>
+<dl><dt>العرض</dt><dd id="tOffer"></dd><dt>النقشات</dt><dd id="tPat"></dd><dt>العدد</dt><dd id="tQty"></dd><dt>التوصيل</dt><dd id="tDel"></dd></dl>
+<div class="total"><span>المجموع</span><b id="tTot"></b></div>
+<a class="btn wa" id="send" href="#"><img src="whatsapp_ivory.png" alt="">أرسلي الطلب واتساب</a>
+<p class="hint">المجموع بدون رسوم التوصيل. نأكد لك كل التفاصيل وطريقة الدفع في الواتساب. الرقم: <span dir="ltr">056 284 7528</span></p></div></div></div></section>
+
+<section class="band" id="fabric"><div class="wrap">
+<h2 class="rv">وش نوع القماش؟</h2><p class="sub rv">من ملصق المصنع على القماش نفسه.</p>
+<div class="facts" id="facts">
+<div class="fact rv"><b>فسكوز ١٠٠٪</b>ناعم وخفيف ويتنفس، مريح في الجو الحار</div>
+<div class="fact rv"><b>١٠٠ جرام</b>للمتر، خفيف ما يثقل وقت الصلاة</div>
+<div class="fact rv"><b>٤ من ٥</b>ثبات اللون مع الغسيل<div class="meter"><i style="--w:80%"></i></div></div>
+<div class="fact rv"><b>٤ من ٥</b>ثبات اللون مع الكوي<div class="meter"><i style="--w:80%"></i></div></div>
+</div>
+<div class="care rv"><span>اغسليه بماء أقل من ٤٠ درجة</span><span>بدون كلور أو مبيّض</span><span>بدون نشافة، عشان ما يطلع وبر</span><span>نشّفيه في الظل</span><span>كوي على حرارة متوسطة</span></div>
+<p class="note">صناعة صينية، والخياطة عندنا.</p></div></section>
+
+<section class="band" id="delivery" style="background:light-dark(#F1E6D8,#26121C)"><div class="wrap">
+<h2 class="rv">التوصيل</h2><p class="sub rv">نوصل لكل مناطق المملكة، من الشمال للجنوب ومن الشرق للغرب.</p>
+<div class="del"><div class="dbox rv"><h3>جدة</h3><p>استلام مباشر، أو خزائن RedBox القريبة منك.</p></div>
+<div class="dbox rv"><h3>باقي المناطق</h3><p>عن طريق خزائن RedBox المنتشرة في المدن، تستلمين طلبك من أقرب خزانة لك في الوقت اللي يناسبك.</p></div></div></div></section>
+
+<section class="band" id="faq"><div class="wrap" style="max-width:820px">
+<h2 class="rv">أسئلة تهمّك</h2><p class="sub rv">إذا عندك أي سؤال ثاني، كلمينا واتساب.</p>
+<details><summary>هل الصور حقيقية؟</summary><p>نعم، كل صور الخياطة والفيديو من شغلنا نفسه، ما فيها صور من النت.</p></details>
+<details><summary>هل اللون ينزل مع الغسيل؟</summary><p>ثبات اللون درجة ٤ من ٥ حسب ملصق المصنع، يعني ثابت مع الغسيل العادي. اغسليه بماء فاتر وبدون مبيّض.</p></details>
+<details><summary>هل يطلع فيه وبر أو خيوط؟</summary><p>الفسكوز قليل الوبر مع العناية الصحيحة، والمهم ما ينحط في النشافة. وحواف الخياطة مقفولة، فما تطلع خيوط.</p></details>
+<details><summary>كيف أطلب؟</summary><p>اختاري النقشة والعرض من هالصفحة، واضغطي «أرسلي الطلب واتساب». توصلنا رسالتك جاهزة، ونرد عليك بالتفاصيل.</p></details>
+<details><summary>كيف الدفع والتوصيل؟</summary><p>نتفق معك على طريقة الدفع وموعد التجهيز في الواتساب. والتوصيل لكل المناطق عن طريق RedBox، وفي جدة فيه استلام مباشر بعد.</p></details>
+</div></section>
+
+<footer class="band" style="padding-bottom:110px"><svg class="logo" width="150" height="195" viewBox="0 0 200 260" aria-hidden="true">
+<path d="M18 252 V112 C18 62 66 30 100 6 C134 30 182 62 182 112 V252 Z" fill="none" stroke="#B8955A" stroke-width="3"></path>
+<path d="M30 252 V116 C30 72 72 44 100 22 C128 44 170 72 170 116 V252" fill="none" stroke="#B8955A" stroke-width="1.2"></path>
+<path d="M100 236 C100 210 98 190 100 168" stroke="#7A8B6F" stroke-width="3" fill="none" stroke-linecap="round"></path>
+<path d="M100 212 C80 206 70 192 72 182 C88 184 98 196 100 212 Z" fill="#7A8B6F"></path>
+<path d="M100 200 C120 194 130 180 128 170 C112 172 102 184 100 200 Z" fill="#7A8B6F"></path>
+<g transform="translate(100 128)">
+<path d="M-34 6 C-40 -20 -20 -40 0 -38 C20 -40 40 -20 34 6 C30 30 -30 30 -34 6 Z" fill="#E7B9C4"></path>
+<path d="M-26 4 C-30 -16 -14 -30 0 -28 C14 -30 30 -16 26 4 C22 22 -22 22 -26 4 Z" fill="#C97A8D"></path>
+<path d="M-17 2 C-19 -12 -8 -20 0 -19 C8 -20 19 -12 17 2 C14 14 -14 14 -17 2 Z" fill="#B5576F"></path>
+<path d="M-8 -2 C-8 -10 8 -10 8 -2 C8 6 -4 8 -4 0 C-4 -4 3 -4 3 0" fill="none" stroke="#4A2233" stroke-width="2.4" stroke-linecap="round"></path>
+</g>
+</svg><h2 style="color:#F7F1E8">ورد المصلى</h2><p style="color:#E7C9A0;margin:6px 0 0">شراشف صلاة</p>
+<div class="soc">
+<a href="https://www.instagram.com/ward.almusalla/" aria-label="إنستقرام"><img src="instagram_ivory.png" alt=""></a>
+<a href="https://www.tiktok.com/@ward.almusalla" aria-label="تيك توك"><img src="tiktok_ivory.png" alt=""></a>
+<a href="https://www.snapchat.com/add/ward.almusalla" aria-label="سناب شات"><img src="snapchat_ivory.png" alt=""></a>
+<a href="https://wa.me/966562847528" aria-label="واتساب"><img src="whatsapp_ivory.png" alt=""></a></div>
+<p dir="ltr" style="margin:0;font-weight:700">@ward.almusalla · 056 284 7528</p></footer>
+<a class="fab" href="https://wa.me/966562847528" aria-label="واتساب"><img src="whatsapp_ivory.png" alt=""></a>
+
+<script>
+{
+const AR=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+const $=id=>document.getElementById(id);
+const OFFERS=[{id:'one',t:'شرشف واحد',p:50,per:1,d:'لك أو لأحد تحبينه'},{id:'gift',t:'علبة هدية',p:80,per:1,d:'شرشف في علبة هدية أنيقة',tag:'للهدايا'},{id:'fam',t:'عرض العائلة',p:135,per:3,d:'٣ شراشف، وفّري ١٥ ريال',tag:'الأوفر'}];
+const CITIES=['جدة','مكة المكرمة','المدينة المنورة','الرياض','الدمام','الخبر','الأحساء','القصيم','حائل','تبوك','الجوف','عرعر','أبها','خميس مشيط','جازان','نجران','الباحة','الطائف','ينبع','مدينة أخرى'];
+let st={offer:'one',qty:1,pats:new Set(),city:'جدة'};
+/* sound: soft synthesized chimes, off until the visitor turns it on */
+let snd=false,ac=null;
+function tone(f,d=.25,v=.08,type='sine'){if(!snd)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type=type;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d+.05)}catch(e){}}
+const tap=()=>tone(660,.18,.06),sel=()=>{tone(784,.3,.06);setTimeout(()=>tone(1046,.4,.05),70)},chime=()=>{[523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,.6,.05),i*90))};
+$('snd').onclick=()=>{snd=!snd;$('snd').textContent=snd?'🔊':'🔈';try{localStorage.setItem('wm-snd',snd?'1':'')}catch(e){}if(snd)chime()};
+/* offers */
+$('offersBox').innerHTML=OFFERS.map(o=>`<button type="button" class="off rv" data-id="${o.id}">${o.tag?`<span class="tag">${o.tag}</span>`:''}<span class="ck">✓</span><h3>${o.t}</h3><div class="pr">${AR(o.p)} <small>ريال</small></div><div>${o.d}</div></button>`).join('');
+$('fOffer').innerHTML=OFFERS.map(o=>`<option value="${o.id}">${o.t} — ${AR(o.p)} ريال</option>`).join('');
+$('fCity').innerHTML=CITIES.map(c=>`<option>${c}</option>`).join('');
+document.querySelectorAll('.off').forEach(b=>b.onclick=()=>{st.offer=b.dataset.id;sel();render();$('order').scrollIntoView({behavior:'smooth'})});
+$('fOffer').onchange=e=>{st.offer=e.target.value;tap();render()};
+$('fCity').onchange=e=>{st.city=e.target.value;tap();render()};
+$('fName').oninput=render;
+$('plus').onclick=()=>{st.qty=Math.min(30,st.qty+1);tap();render()};
+$('minus').onclick=()=>{st.qty=Math.max(1,st.qty-1);tap();render()};
+/* catalog */
+const car=$('car');
+car.innerHTML=[...Array(9)].map((_,i)=>`<figure id="pg${i+1}"><img src="cat${i+1}.jpg" alt="النقشات من ${AR(i*5+1)} إلى ${AR(i*5+5)}" loading="lazy"></figure>`).join('');
+$('pages').innerHTML=[...Array(9)].map((_,i)=>`<button class="pg" data-p="${i+1}">${AR(i*5+1)}–${AR(i*5+5)}</button>`).join('');
+$('chips').innerHTML=[...Array(45)].map((_,i)=>`<button type="button" class="chip" data-n="${i+1}" aria-pressed="false">${AR(i+1)}</button>`).join('');
+let cur=1;
+function goPage(p){cur=Math.max(1,Math.min(9,p));$('pg'+cur).scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});markPage()}
+function markPage(){document.querySelectorAll('#pages .pg').forEach(b=>b.classList.toggle('on',+b.dataset.p===cur))}
+document.querySelectorAll('#pages .pg').forEach(b=>b.onclick=()=>{tap();goPage(+b.dataset.p)});
+$('prevP').onclick=()=>{tap();goPage(cur-1)};$('nextP').onclick=()=>{tap();goPage(cur+1)};
+car.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){goPage(cur+1)}if(e.key==='ArrowRight'){goPage(cur-1)}});
+const pio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.6){cur=+e.target.id.slice(2);markPage()}})},{root:car,threshold:[.6]});
+car.querySelectorAll('figure').forEach(f=>pio.observe(f));
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const n=+c.dataset.n;if(st.pats.has(n)){st.pats.delete(n);tap()}else{st.pats.add(n);sel();goPage(Math.ceil(n/5))}c.classList.toggle('on',st.pats.has(n));c.setAttribute('aria-pressed',st.pats.has(n));render()});
+/* order summary */
+function render(){
+ const o=OFFERS.find(x=>x.id===st.offer);
+ document.querySelectorAll('.off').forEach(b=>b.classList.toggle('sel',b.dataset.id===st.offer));
+ $('fOffer').value=st.offer;
+ const pats=[...st.pats].sort((a,b)=>a-b);
+ $('tOffer').textContent=o.t;$('tPat').textContent=pats.length?pats.map(AR).join('، '):'لم تختاري بعد';
+ $('q').textContent=AR(st.qty);$('tQty').textContent=AR(st.qty)+(o.per>1?` (${AR(st.qty*o.per)} شراشف)`:'');
+ $('tDel').textContent=st.city==='جدة'?'جدة: استلام أو RedBox':st.city+': RedBox';
+ const tot=o.p*st.qty;$('tTot').textContent=AR(tot)+' ريال';$('tTot').classList.remove('pop');void $('tTot').offsetWidth;$('tTot').classList.add('pop');
+ const name=$('fName').value.trim();
+ const msg=`السلام عليكم 🌸 أبغى أطلب من ورد المصلى:\n• العرض: ${o.t}\n• النقشات: ${pats.length?pats.join('، '):'أبغى تساعدوني أختار'}\n• العدد: ${st.qty}\n• المدينة: ${st.city}${name?`\n• الاسم: ${name}`:''}\n• المجموع: ${tot} ريال`;
+ $('send').href='https://wa.me/966562847528?text='+encodeURIComponent(msg);
+}
+$('send').addEventListener('click',()=>chime());
+render();markPage();
+try{if(localStorage.getItem('wm-snd')){/* stays off until a tap; browsers need a click to play sound */}}catch(e){}
+/* reveal on scroll */
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');rio.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv,.fact').forEach(el=>rio.observe(el));
+/* drifting petals in the hero */
+const cv=$('petals'),cx=cv.getContext('2d');let W=0,H=0;
+const fit=()=>{const r=cv.getBoundingClientRect();W=cv.width=r.width;H=cv.height=r.height};const cro=new ResizeObserver(fit);cro.observe(cv);
+const P=[...Array(22)].map((_,i)=>({x:Math.random(),y:Math.random(),s:6+Math.random()*10,v:.15+Math.random()*.35,r:Math.random()*6,c:['#E7B9C4','#B5576F','#E7C9A0'][i%3]}));
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function petal(p){cx.save();cx.translate(p.x*W,p.y*H);cx.rotate(p.r);cx.globalAlpha=.55;cx.fillStyle=p.c;cx.beginPath();cx.ellipse(0,0,p.s,p.s*.55,0,0,7);cx.fill();cx.restore()}
+function loop(){cx.clearRect(0,0,W,H);P.forEach(p=>{p.y+=p.v/H*1.6;p.x+=Math.sin(p.y*6+p.r)*.0006;p.r+=.01;if(p.y>1.05){p.y=-.05;p.x=Math.random()}petal(p)});if(!still)requestAnimationFrame(loop)}
+loop();
+}
+</script></body></html>
